@@ -81,39 +81,50 @@ def crearTablero():
     try:
         try:
             numeroColumnas = int(input('Selecciona un numero de columnas:'))
+            print()
             assert numeroColumnas > Min_Columnas and numeroColumnas < Max_Columnas
             
-        except AssertionError as errorColumnas:
+        except AssertionError:
             if numeroColumnas < Min_Columnas:
                 print('El numero de columnas elegido es inferior al minimo requerido.')
+                raise Exception
             elif numeroColumnas > Max_Columnas:
                 print('El numero de columnas elegido es superior al maximo permitido.')
+                raise Exception
                 
                 
         try:       
             numeroFilas = int(input('Seleccione un numero de filas:'))
+            print()
             assert numeroFilas > Min_Filas and numeroFilas < Max_Filas
             
-        except AssertionError as errorFilas:
-            if numeroColumnas < Min_Columnas:
-                print('El numero de columnas elegido es inferior al minimo requerido.')
-            elif numeroColumnas > Max_Columnas:
-                print('El numero de columnas elegido es superior al maximo permitido.')
+        except AssertionError:
+            if numeroFilas < Min_Filas:
+                print('El numero de filas elegido es inferior al minimo requerido.')
+                raise Exception
+            elif numeroFilas > Max_Filas:
+                print('El numero de filas elegido es superior al maximo permitido.')
+                raise Exception
                 
         
         try:        
             numeroTurnos = int(input('Selecciona un numero de turnos:'))
-            assert numeroTurnos > 0 and numeroTurnos <= 100
+            print()
+            assert numeroTurnos > 0 and numeroTurnos < 100
+            
         except AssertionError:
-            if numeroTurnos > 100:
-                print("El numero maximo de turnos permitidos es de 99.")
-            elif numeroTurnos > 0:
+            if numeroTurnos <= 0:
                 print('El numero de turnos elegidos debe ser positivo y distinto de 0.')
+                raise Exception
+            elif numeroTurnos >= 100:
+                print("El numero maximo de turnos permitidos es de 99.")
+                raise Exception
                 
                 
                 
-    except:
+    except Exception:
         print('Ha ocurrido algun fallo al crear la partida. Por favor, intentelo de nuevo.')
+        print()
     
     else:
         for num in range(1,numeroColumnas + 1):
