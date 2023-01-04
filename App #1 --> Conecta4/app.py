@@ -76,6 +76,9 @@ def juegaPrimero():
         return 'Ha ocurrido un error al elegir al primero jugador.'
         
   
+
+  
+  
 #Crear tablero
 def crearTablero():
     try:
@@ -127,19 +130,37 @@ def crearTablero():
         print()
     
     else:
-        for num in range(1,numeroColumnas + 1):
-            print('|'+ str(num),end='')
-        else:
-            print('|',end='\n')
-            
-        for num in range(numeroFilas):
-            print("| "* (numeroColumnas + 1))
-            
-        print('**** EL TABLERO HA SIDO CREADO CON EXITO ****')
+        tablero = []
+        contador = 0
+        for fila in range(numeroFilas):
+            tablero.append([])
+            if contador == 0:
+                for numero in range(1,numeroColumnas + 1):
+                    tablero[fila].append(numero)
+                    contador +=1
+            else:
+                for columna in range(numeroColumnas):
+                    tablero[fila].append(ESPACIO_VACIO)
+                    
+        print('**** EL TABLERO HA SIDO CREADO CON EXITO ****')  
+          
+        return tablero
             
   # -------------------------------------------------------------------------------------------------------------------------------- #
 
-
+def mostrarTablero(tablero):
+    try:
+        assert tablero != None   # Esta funcion necesita que se le pase el argumento del tablero, pero es posible que en su creacion
+        print()                  # no se cumplan algunas condiciones y se ejecute la excepcion AssertionError.
+        for item in tablero:     # Es por esto que incluyo un bloque try: except: aqui, pues en el caso de que no reciba el argumento 
+            print('|',end='')    # del tablero, no podemos dejar que el programa falle.
+            for columna in item:
+                print(columna,end='|')
+            else:
+                print('',end='\n')
+        print('+-+-+-+-+-+-+-+-+-+-+-+-+-+')
+    except AssertionError:
+        pass
 #Control de turnos
 def controlarTurnos(turnos):
     try:
@@ -156,5 +177,4 @@ def jugarPartida():
     pass
 
 if __name__ == '__main__':
-    crearTablero()
-    
+    mostrarTablero((crearTablero()))
