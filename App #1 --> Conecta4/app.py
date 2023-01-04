@@ -132,7 +132,7 @@ def crearTablero():
     else:
         tablero = []
         contador = 0
-        for fila in range(numeroFilas):
+        for fila in range(numeroFilas + 1):     # + 1 porque la fila inicial se usara como cabecera, que marcara el numero de columnas.
             tablero.append([])
             if contador == 0:
                 for numero in range(1,numeroColumnas + 1):
