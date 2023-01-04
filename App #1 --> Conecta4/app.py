@@ -18,6 +18,27 @@
 import random
 from colorama import init
 
+
+
+# Declaro las constantes del juego ----------------------
+
+
+Min_Filas = 5
+Max_Filas = 10
+Min_Columnas = 6
+Max_Columnas = 10
+ESPACIO_VACIO = ' '
+Jugador_1 = 1
+Jugador_2 = 2
+JUGANDO_CPU = False
+CONECTA = 4
+
+
+
+# ------------------------------------------------------------
+
+
+
 def modoDeJuego():
     try:
         modoJuego = int(input("""Selecciona un modo de juego:
@@ -40,17 +61,6 @@ def accionJugadores(modoDeJuego):
         # Definir que jugador empieza antes, random.randint()
         
         
-    
-
-
-#Control de turnos
-def controlarTurnos(turnos):
-    try:
-        turnosRestantes = turnos - 1
-        assert turnosRestantes > 0
-        return "Turnos restantes: {} turnos.".format(turnosRestantes)
-    except AssertionError:
-        print("El juego ha terminado.")
                
 #Definir Jugador 1   
 def juegaPrimero():
@@ -68,22 +78,68 @@ def juegaPrimero():
   
 #Crear tablero
 def crearTablero():
-    
-    numeroColumnas = int(input('Selecciona un numero de columnas:'))
-    numeroFilas = int(input('Seleccione un numero de filas:'))
-    
-    numeroTurnos = int(input('Selecciona un numero de turnos:'))
-    
-    for num in range(1,numeroColumnas + 1):
-        print('|'+ str(num),end='')
-    else:
-        print('|',end='\n')
+    try:
+        try:
+            numeroColumnas = int(input('Selecciona un numero de columnas:'))
+            assert numeroColumnas > Min_Columnas and numeroColumnas < Max_Columnas
+            
+        except AssertionError as errorColumnas:
+            if numeroColumnas < Min_Columnas:
+                print('El numero de columnas elegido es inferior al minimo requerido.')
+            elif numeroColumnas > Max_Columnas:
+                print('El numero de columnas elegido es superior al maximo permitido.')
+                
+                
+        try:       
+            numeroFilas = int(input('Seleccione un numero de filas:'))
+            assert numeroFilas > Min_Filas and numeroFilas < Max_Filas
+            
+        except AssertionError as errorFilas:
+            if numeroColumnas < Min_Columnas:
+                print('El numero de columnas elegido es inferior al minimo requerido.')
+            elif numeroColumnas > Max_Columnas:
+                print('El numero de columnas elegido es superior al maximo permitido.')
+                
         
-    for num in range(numeroFilas):
-        print("| "* (numeroColumnas + 1))
-
-
+        try:        
+            numeroTurnos = int(input('Selecciona un numero de turnos:'))
+            assert numeroTurnos > 0 and numeroTurnos <= 100
+        except AssertionError:
+            if numeroTurnos > 100:
+                print("El numero maximo de turnos permitidos es de 99.")
+            elif numeroTurnos > 0:
+                print('El numero de turnos elegidos debe ser positivo y distinto de 0.')
+                
+                
+                
+    except:
+        print('Ha ocurrido algun fallo al crear la partida. Por favor, intentelo de nuevo.')
+    
+    else:
+        for num in range(1,numeroColumnas + 1):
+            print('|'+ str(num),end='')
+        else:
+            print('|',end='\n')
+            
+        for num in range(numeroFilas):
+            print("| "* (numeroColumnas + 1))
+            
+        print('**** EL TABLERO HA SIDO CREADO CON EXITO ****')
+            
   # -------------------------------------------------------------------------------------------------------------------------------- #
+
+
+#Control de turnos
+def controlarTurnos(turnos):
+    try:
+        turnosRestantes = turnos - 1
+        assert turnosRestantes > 0
+        return "Turnos restantes: {} turnos.".format(turnosRestantes)
+    except AssertionError:
+        print("El juego ha terminado.")
+  
+  # -------------------------------------------------------------------------------------------------------------------------------- #
+  
 # Jugar partida
 def jugarPartida():
     pass
