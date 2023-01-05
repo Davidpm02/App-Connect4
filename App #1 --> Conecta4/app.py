@@ -18,6 +18,8 @@
 import random
 from colorama import init
 
+import time
+
 
 
 # Declaro las constantes del juego ----------------------
@@ -51,30 +53,84 @@ def modoDeJuego():
 
 
 
-def accionJugadores(modoDeJuego):
+def juegaPrimero(modoDeJuego):
     if modoDeJuego == 1:
         print('Se ha seleccionado el modo de juego J vs J.')
         # Definir que jugador empieza antes, random.randint()
+        try:
+            verifacionJugador_1 = input('Presiona cualquier tecla, Jugador_1...')
+            verifacionJugador_2 = input('Presiona cualquier tecla, Jugador_2...')
+            assert verifacionJugador_1 != None and verifacionJugador_2 != None
+            print()
+            
+            
+            
+            jugadores = [Jugador_1,Jugador_2]  # Antes hemos definido que Jugador_1 apunta al valor 1 en memoria, y Jugador_2 apunta al valor 2.
+            print('Se esta decidiendo que jugador comienza antes la partida.')
+            time.sleep(4)
+            
+            resultado = random.randint(jugadores)
+            print('El jugador elegido es...')
+            if resultado == 1:
+                time.sleep(2)
+                print('Jugador_1!')
+            elif resultado == 2:
+                time.sleep(2)
+                print('Jugador_2!')
+                
+            return resultado # Se debe utilizar esta variable en la funcion jugarPartida() para indicar es el turno del jugador 1, o el turno de jugador 2.
+            
+            
+            
+        except AssertionError:
+            if verifacionJugador_1 == None:
+                print('El Jugador_1 ha sido desconectado por falta de habilidad')
+            elif verifacionJugador_2 == None:
+                print('El Jugador_2 ha sido desconectado por falta de habilidad')
+            
+        
+            
         
     elif modoDeJuego == 2:
         print('Se ha seleccionado el modo de juego J vs IA.')
         # Definir que jugador empieza antes, random.randint()
-        
+        try:
+            verifacionJugador_1 = input('Presiona cualquier tecla, Jugador_1...')
+            assert verifacionJugador_1 != None
+            print("La IA ya esta lista!")
+            print()
+            
+            
+            
+            CPU = 2
+            jugadores = [Jugador_1,CPU]  # Antes hemos definido que Jugador_1 apunta al valor 1 en memoria, y Jugador_2 apunta al valor 2.
+            print('Se esta decidiendo que jugador comienza antes la partida.')
+            time.sleep(4)
+            
+            resultado = random.randint(jugadores)
+            print('El jugador elegido es...')
+            if resultado == 1:
+                time.sleep(2)
+                print('Jugador_1!')
+            elif resultado == 2:
+                time.sleep(2)
+                print('IA!')
+                
+            return resultado # Se debe utilizar esta variable en la funcion jugarPartida() para indicar es el turno del jugador 1, o el turno de jugador 2.
+            
+            
+            
+        except AssertionError:
+            if verifacionJugador_1 == None:
+                print('El Jugador_1 ha sido desconectado por falta de habilidad')
+            
         
                
 #Definir Jugador 1   
-def juegaPrimero():
-    jugador1 = int(input('Escriba un numero del 1 al 5:'))
-    jugador2 = int(input('Escriba un numero del 1 al 5:'))
-    
-    resultado = random.randint(jugador1,jugador2)
-    if resultado == jugador1:
-        return '--- El jugador 1 empieza el juego primero. ---'
-    elif resultado == jugador2:
-        return '--- El jugador 2 empieza el juego primero. ---'
-    else:
-        return 'Ha ocurrido un error al elegir al primero jugador.'
-        
+def accionesJugadores(jugador):
+    pass
+    #Si es el jugador es 1, hace x cosas.
+    #Si el jugador es 2 o IA, hace x cosas.
   
 
   
@@ -158,6 +214,7 @@ def mostrarTablero(tablero):
                 print(columna,end='|')
             else:
                 print('',end='\n')
+                
         print('+-+-+-+-+-+-+-+-+-+-+-+-+-+')
     except AssertionError:
         pass
