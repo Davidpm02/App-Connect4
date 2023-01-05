@@ -30,3 +30,19 @@ Todavia el juego no es funcional.
 <br>
 <br>
 <br>
+
+
+
+<h3> ----------- Modificaciones en funcionalidades ----------- </h3>
+
+<h2> COMMIT #4 --> juegaPrimero() </h2>
+Se ha modificado la funcion juegaPrimero() para decidir correctamente que jugador empieza el juego.
+
+La funcion tiene dos caminos definidos, en funcion de si el modo de juego introducido es 'J vs J', o 'J vs IA'.
+
+
+Todavia el juego no es funcional.
+<br>
+<br>
+<br>
+<br>
