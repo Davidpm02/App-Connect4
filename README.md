@@ -46,3 +46,17 @@ Todavia el juego no es funcional.
 <br>
 <br>
 <br>
+
+<h2> COMMIT #5 --> siguienteJugador() ; jugarPartida() </h2>
+Se ha creado una nueva funcion que recibe el jugador del turno actual y lo modifica para el siguiente turno.
+
+El cuerpo de la funcion crearTablero() se ha incluido en la funcion jugarPartida(), por lo que se podria eliminar la funcion crearTablero() perse.
+
+Paquenos cambios en otras funciones.
+
+
+Todavia el juego no es funcional.
+<br>
+<br>
+<br>
+<br>
