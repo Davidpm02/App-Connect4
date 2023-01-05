@@ -16,7 +16,7 @@
 
 
 import random
-from colorama import init
+from colorama import init, Fore,Style
 
 import time
 
@@ -69,7 +69,7 @@ def juegaPrimero(modoDeJuego):
             print('Se esta decidiendo que jugador comienza antes la partida.')
             time.sleep(4)
             
-            resultado = random.randint(jugadores)
+            resultado = random.choice(jugadores)
             print('El jugador elegido es...')
             if resultado == 1:
                 time.sleep(2)
@@ -127,8 +127,60 @@ def juegaPrimero(modoDeJuego):
         
                
 #Definir Jugador 1   
-def accionesJugadores(jugador):
-    pass
+def accionesJugadores(jugador, tablero):   # esta funcion es propia para jugar J vs J, no para J vs IA.
+    
+    if jugador == 1:
+        try:
+            print("-- Turno del Jugador_1 -- ")
+            print("-- Ficha del Jugador_1 --> X")
+            
+            print()
+            columnaEscogida = int(input('Seleccione la columna donde quiera colocar su ficha:'))
+            fichaJugador_1 = 'X'
+            if tablero[-1][columnaEscogida] != ' ':
+                raise Exception
+            elif tablero[-1][columnaEscogida] == ' ':
+                tablero[-1][columnaEscogida] = fichaJugador_1
+        except Exception:
+            print('La columna seleccionada ya esta ocupada.Por favor, selecciona otra.')
+        else:
+            siguienteJugador(jugador)
+
+            
+    elif jugador == 2:
+        try:
+            print("-- Turno del Jugador_2 -- ")
+            print("-- Ficha del Jugador_2 --> O")
+            
+            print()
+            columnaEscogida = int(input('Seleccione la columna donde quiera colocar su ficha:'))
+            fichaJugador_1 = 'O'
+            if tablero[-1][columnaEscogida] != ' ':
+                raise Exception
+            elif tablero[-1][columnaEscogida] == ' ':
+                tablero[-1][columnaEscogida] = fichaJugador_1
+        except Exception:
+            print('La columna seleccionada ya esta ocupada.Por favor, selecciona otra.')
+        else:
+            siguienteJugador(jugador)
+            print('hola')
+        
+
+def siguienteJugador(jugadorActual):
+    try:
+        assert jugadorActual == 1 or jugadorActual == 2
+        if jugadorActual == 1:
+            jugadorActual = 2
+            return jugadorActual
+        
+        elif jugadorActual == 2:
+            jugadorActual = 1
+            return jugadorActual
+    except AssertionError:
+        print("Ha ocurrido un error al cambiar de jugador.")
+        
+    
+    
     #Si es el jugador es 1, hace x cosas.
     #Si el jugador es 2 o IA, hace x cosas.
   
@@ -136,7 +188,7 @@ def accionesJugadores(jugador):
   
   
 #Crear tablero
-def crearTablero():
+def crearTablero():  #borrar?
     try:
         try:
             numeroColumnas = int(input('Selecciona un numero de columnas:'))
@@ -199,12 +251,13 @@ def crearTablero():
                     tablero[fila].append(ESPACIO_VACIO)
                     
         print('**** EL TABLERO HA SIDO CREADO CON EXITO ****')  
-          
-        return tablero
+        lista = [tablero,numeroTurnos]
+        return lista
+        
             
   # -------------------------------------------------------------------------------------------------------------------------------- #
 
-def mostrarTablero(tablero):
+def mostrarTablero(tablero,turnosRestantes):
     try:
         assert tablero != None   # Esta funcion necesita que se le pase el argumento del tablero, pero es posible que en su creacion
         print()                  # no se cumplan algunas condiciones y se ejecute la excepcion AssertionError.
@@ -216,14 +269,17 @@ def mostrarTablero(tablero):
                 print('',end='\n')
                 
         print('+-+-+-+-+-+-+-+-+-+-+-+-+-+')
+        print("NUMERO TURNOS RESTANTES: {}".format(controlarTurnos(turnosRestantes)))
+        accionesJugadores(Jugador_1, tablero)
+        
     except AssertionError:
         pass
 #Control de turnos
 def controlarTurnos(turnos):
     try:
-        turnosRestantes = turnos - 1
-        assert turnosRestantes > 0
-        return "Turnos restantes: {} turnos.".format(turnosRestantes)
+        turnos -= 1
+        assert turnos > 0
+        return turnos
     except AssertionError:
         print("El juego ha terminado.")
   
@@ -231,7 +287,72 @@ def controlarTurnos(turnos):
   
 # Jugar partida
 def jugarPartida():
-    pass
+    try:
+        try:
+            numeroColumnas = int(input('Selecciona un numero de columnas:'))
+            print()
+            assert numeroColumnas > Min_Columnas and numeroColumnas < Max_Columnas
+            
+        except AssertionError:
+            if numeroColumnas < Min_Columnas:
+                print('El numero de columnas elegido es inferior al minimo requerido.')
+                raise Exception
+            elif numeroColumnas > Max_Columnas:
+                print('El numero de columnas elegido es superior al maximo permitido.')
+                raise Exception
+                
+                
+        try:       
+            numeroFilas = int(input('Seleccione un numero de filas:'))
+            print()
+            assert numeroFilas > Min_Filas and numeroFilas < Max_Filas
+            
+        except AssertionError:
+            if numeroFilas < Min_Filas:
+                print('El numero de filas elegido es inferior al minimo requerido.')
+                raise Exception
+            elif numeroFilas > Max_Filas:
+                print('El numero de filas elegido es superior al maximo permitido.')
+                raise Exception
+                
+        
+        try:        
+            numeroTurnos = int(input('Selecciona un numero de turnos:'))
+            print()
+            assert numeroTurnos > 0 and numeroTurnos < 100
+            
+        except AssertionError:
+            if numeroTurnos <= 0:
+                print('El numero de turnos elegidos debe ser positivo y distinto de 0.')
+                raise Exception
+            elif numeroTurnos >= 100:
+                print("El numero maximo de turnos permitidos es de 99.")
+                raise Exception
+                
+                
+                
+    except Exception:
+        print('Ha ocurrido algun fallo al crear la partida. Por favor, intentelo de nuevo.')
+        print()
+    
+    else:
+        tablero = []
+        contador = 0
+        for fila in range(numeroFilas + 1):     # + 1 porque la fila inicial se usara como cabecera, que marcara el numero de columnas.
+            tablero.append([])
+            if contador == 0:
+                for numero in range(1,numeroColumnas + 1):
+                    tablero[fila].append(numero)
+                    contador +=1
+            else:
+                for columna in range(numeroColumnas):
+                    tablero[fila].append(ESPACIO_VACIO)
+                    
+        print('**** EL TABLERO HA SIDO CREADO CON EXITO ****')
+        
+    while True:
+        mostrarTablero(tablero,numeroTurnos)
+    
 
 if __name__ == '__main__':
-    mostrarTablero((crearTablero()))
+    jugarPartida()
