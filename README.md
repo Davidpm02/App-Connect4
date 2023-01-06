@@ -60,3 +60,28 @@ Todavia el juego no es funcional.
 <br>
 <br>
 <br>
+
+
+<h2> COMMIT #6 --> jugarPartida() </h2>
+La funcion jugarPartida() ahora integra gran parte de codigo del cuerpo del resto de funciones.
+
+El juego es funcional en cierto modo. Faltan cambios por hacer.
+
+  - No se anaden fichas a partir de la segunda fila desde debajo.
+  
+  - Si existe una ficha en una columna y el otro jugador introduce una ficha suya en esa columna, la ficha existente se sustituye.
+  
+  - Hay ocasiones en los que ciertos fallos no estan contemplados, y el programa rompe.
+  
+  - Colores en las fichas de los jugadores.
+  
+  - Al introducir fichas, el numero de la columna no corresponde con el numero correcto ( numero 0 == columna 1; numero 1 == columna 2 ...)
+  
+  - IA
+  
+  - ...
+<br>
+<br>
+<br>
+<br>
+
