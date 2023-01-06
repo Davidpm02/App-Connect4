@@ -137,14 +137,31 @@ def accionesJugadores(jugador, tablero):   # esta funcion es propia para jugar J
             print()
             columnaEscogida = int(input('Seleccione la columna donde quiera colocar su ficha:'))
             fichaJugador_1 = 'X'
-            if tablero[-1][columnaEscogida] != ' ':
-                raise Exception
-            elif tablero[-1][columnaEscogida] == ' ':
-                tablero[-1][columnaEscogida] = fichaJugador_1
-        except Exception:
-            print('La columna seleccionada ya esta ocupada.Por favor, selecciona otra.')
-        else:
-            siguienteJugador(jugador)
+            assert columnaEscogida in range(len(tablero[-1]) + 1)            # OPTIMIZAR EL CODIGO
+            if tablero[-1][columnaEscogida] == ' ':                          # A partir de la segunda fila, no se ingresan X
+                tablero[-1][columnaEscogida] = fichaJugador_1                # Si hay una X en una columna y pongo una O, se sustituye la X por la O. SOLUCIONAR ESTO.
+            elif tablero[-1][columnaEscogida] != ' ':
+                tablero[-2][columnaEscogida] = fichaJugador_1
+            elif tablero[-2][columnaEscogida] != ' ':
+                tablero[-3][columnaEscogida] = fichaJugador_1
+            elif tablero[-3][columnaEscogida] != ' ':
+                tablero[-4][columnaEscogida] = fichaJugador_1
+            elif tablero[-4][columnaEscogida] != ' ':
+                tablero[-5][columnaEscogida] = fichaJugador_1
+            elif tablero[-5][columnaEscogida] != ' ':
+                tablero[-6][columnaEscogida] = fichaJugador_1
+            elif tablero[-6][columnaEscogida] != ' ':
+                tablero[-7][columnaEscogida] = fichaJugador_1
+            elif tablero[-8][columnaEscogida] != ' ':
+                tablero[-9][columnaEscogida] = fichaJugador_1
+            elif tablero[-9][columnaEscogida] != ' ':
+                tablero[-10][columnaEscogida] = fichaJugador_1
+                
+        except AssertionError:
+            print()
+            print('=-=-= Por favor, escoge una columna que pertenezca al tablero. =-=-=')
+        except IndexError:
+            print('Se ha llegado al limite superior de la columna.')
 
             
     elif jugador == 2:
@@ -154,16 +171,32 @@ def accionesJugadores(jugador, tablero):   # esta funcion es propia para jugar J
             
             print()
             columnaEscogida = int(input('Seleccione la columna donde quiera colocar su ficha:'))
-            fichaJugador_1 = 'O'
-            if tablero[-1][columnaEscogida] != ' ':
-                raise Exception
-            elif tablero[-1][columnaEscogida] == ' ':
-                tablero[-1][columnaEscogida] = fichaJugador_1
-        except Exception:
-            print('La columna seleccionada ya esta ocupada.Por favor, selecciona otra.')
-        else:
-            siguienteJugador(jugador)
-            print('hola')
+            fichaJugador_2 = 'O'
+            assert columnaEscogida in range(len(tablero[-1]) + 1)            # OPTIMIZAR EL CODIGO
+            if tablero[-1][columnaEscogida] == ' ':                          # A partir de la segunda fila, no se ingresan X
+                tablero[-1][columnaEscogida] = fichaJugador_2
+            elif tablero[-1][columnaEscogida] != ' ':
+                tablero[-2][columnaEscogida] = fichaJugador_2
+            elif tablero[-2][columnaEscogida] != ' ':
+                tablero[-3][columnaEscogida] = fichaJugador_2
+            elif tablero[-3][columnaEscogida] != ' ':
+                tablero[-4][columnaEscogida] = fichaJugador_2
+            elif tablero[-4][columnaEscogida] != ' ':
+                tablero[-5][columnaEscogida] = fichaJugador_2
+            elif tablero[-5][columnaEscogida] != ' ':
+                tablero[-6][columnaEscogida] = fichaJugador_2
+            elif tablero[-6][columnaEscogida] != ' ':
+                tablero[-7][columnaEscogida] = fichaJugador_2
+            elif tablero[-8][columnaEscogida] != ' ':
+                tablero[-9][columnaEscogida] = fichaJugador_2
+            elif tablero[-9][columnaEscogida] != ' ':
+                tablero[-10][columnaEscogida] = fichaJugador_2
+                
+        except AssertionError:
+            print()
+            print('=-=-= Por favor, escoge una columna que pertenezca al tablero. =-=-=')
+        except IndexError:
+            print('Se ha llegado al limite superior de la columna.')
         
 
 def siguienteJugador(jugadorActual):
@@ -267,10 +300,6 @@ def mostrarTablero(tablero,turnosRestantes):
                 print(columna,end='|')
             else:
                 print('',end='\n')
-                
-        print('+-+-+-+-+-+-+-+-+-+-+-+-+-+')
-        print("NUMERO TURNOS RESTANTES: {}".format(controlarTurnos(turnosRestantes)))
-        accionesJugadores(Jugador_1, tablero)
         
     except AssertionError:
         pass
@@ -287,6 +316,8 @@ def controlarTurnos(turnos):
   
 # Jugar partida
 def jugarPartida():
+    jugadorActual = Jugador_1
+    juegaPrimero(modoDeJuego)
     try:
         try:
             numeroColumnas = int(input('Selecciona un numero de columnas:'))
@@ -350,8 +381,29 @@ def jugarPartida():
                     
         print('**** EL TABLERO HA SIDO CREADO CON EXITO ****')
         
-    while True:
+    while numeroTurnos > 0:
         mostrarTablero(tablero,numeroTurnos)
+        print('+-+-+-+-+-+-+-+-+-+-+-+-+-+')
+        print("NUMERO TURNOS RESTANTES: {}".format(numeroTurnos))
+        accionesJugadores(jugadorActual, tablero)
+        numeroTurnos -= 1
+        if numeroTurnos == 0:
+            mostrarTablero(tablero,numeroTurnos)            
+        try:
+            assert jugadorActual == Jugador_1 or jugadorActual == Jugador_2
+            if jugadorActual == Jugador_1:
+                jugadorActual = Jugador_2
+            elif jugadorActual == Jugador_2:
+                jugadorActual = Jugador_1
+        except AssertionError:
+            print("Ha ocurrido un error al cambiar de jugador.")
+    else:
+        print()
+        print('###')
+        print("EL JUEGO HA TERMINADO.")
+        print('Jugador_1 y Jugador_2 quedan EMPATE.')
+        print('###')
+        print()
     
 
 if __name__ == '__main__':
