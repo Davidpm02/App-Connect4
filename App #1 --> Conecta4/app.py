@@ -137,30 +137,313 @@ def accionesJugadores(jugador, tablero):   # esta funcion es propia para jugar J
             print()
             columnaEscogida = int(input('Seleccione la columna donde quiera colocar su ficha:'))
             fichaJugador_1 = 'X'
-            assert columnaEscogida in range(len(tablero[-1]) + 1)            # OPTIMIZAR EL CODIGO
-            if tablero[-1][columnaEscogida] == ' ':                          # A partir de la segunda fila, no se ingresan X
-                tablero[-1][columnaEscogida] = Fore.RED + fichaJugador_1                # Si hay una X en una columna y pongo una O, se sustituye la X por la O. SOLUCIONAR ESTO.
-            elif tablero[-1][columnaEscogida] != ' ':
-                tablero[-2][columnaEscogida] = Fore.RED + fichaJugador_1
-            elif tablero[-2][columnaEscogida] != ' ':
-                tablero[-3][columnaEscogida] = Fore.RED + fichaJugador_1
-            elif tablero[-3][columnaEscogida] != ' ':
-                tablero[-4][columnaEscogida] = Fore.RED + fichaJugador_1
-            elif tablero[-4][columnaEscogida] != ' ':
-                tablero[-5][columnaEscogida] = Fore.RED + fichaJugador_1
-            elif tablero[-5][columnaEscogida] != ' ':
-                tablero[-6][columnaEscogida] = Fore.RED + fichaJugador_1
-            elif tablero[-6][columnaEscogida] != ' ':
-                tablero[-7][columnaEscogida] = Fore.RED + fichaJugador_1
-            elif tablero[-8][columnaEscogida] != ' ':
-                tablero[-9][columnaEscogida] = Fore.RED + fichaJugador_1
-            elif tablero[-9][columnaEscogida] != ' ':
-                tablero[-10][columnaEscogida] = Fore.RED + fichaJugador_1
+            assert columnaEscogida in range(1, len(tablero[-1]) + 1)# OPTIMIZAR EL CODIGO
+            if columnaEscogida == 1:
+                if tablero[-1][0] == ' ':
+                    tablero[-1][0] = Fore.RED + fichaJugador_1 
+                else:
+                    if tablero[-2][0] == ' ':
+                        tablero[-2][0] = Fore.RED + fichaJugador_1 
+                    else:
+                        if tablero[-3][0] == ' ':
+                            tablero[-3][0] = Fore.RED + fichaJugador_1 
+                        else:
+                            if tablero[-4][0] == ' ':
+                                tablero[-4][0] = Fore.RED + fichaJugador_1
+                            else:
+                                if tablero[-5][0] == ' ':
+                                    tablero[-5][0] = Fore.RED + fichaJugador_1
+                                else:
+                                    if tablero[-6][0] == ' ':
+                                        tablero[-6][0] = Fore.RED + fichaJugador_1
+                                    else:
+                                        if tablero[-7][0] == ' ':
+                                            tablero[-7][0] = Fore.RED + fichaJugador_1
+                                        else:
+                                            if tablero[-8][0] == ' ':
+                                                tablero[-8][0] = Fore.RED + fichaJugador_1
+                                            else:
+                                                if tablero[-9][0] == ' ':
+                                                    tablero[-9][0] = Fore.RED + fichaJugador_1
+                                                else:
+                                                    if tablero[-10][0] == ' ':
+                                                        tablero[-10][0] = Fore.RED + fichaJugador_1
+            elif columnaEscogida == 2:
+                if tablero[-1][1] == ' ':
+                    tablero[-1][1] = Fore.RED + fichaJugador_1 
+                else:
+                    if tablero[-2][1] == ' ':
+                        tablero[-2][1] = Fore.RED + fichaJugador_1 
+                    else:
+                        if tablero[-3][1] == ' ':
+                            tablero[-3][1] = Fore.RED + fichaJugador_1 
+                        else:
+                            if tablero[-4][1] == ' ':
+                                tablero[-4][1] = Fore.RED + fichaJugador_1
+                            else:
+                                if tablero[-5][1] == ' ':
+                                    tablero[-5][1] = Fore.RED + fichaJugador_1
+                                else:
+                                    if tablero[-6][1] == ' ':
+                                        tablero[-6][1] = Fore.RED + fichaJugador_1
+                                    else:
+                                        if tablero[-7][1] == ' ':
+                                            tablero[-7][1] = Fore.RED + fichaJugador_1
+                                        else:
+                                            if tablero[-8][1] == ' ':
+                                                tablero[-8][1] = Fore.RED + fichaJugador_1
+                                            else:
+                                                if tablero[-9][1] == ' ':
+                                                    tablero[-9][1] = Fore.RED + fichaJugador_1
+                                                else:
+                                                    if tablero[-10][1] == ' ':
+                                                        tablero[-10][1] = Fore.RED + fichaJugador_1
+            elif columnaEscogida == 3:
+                if tablero[-1][2] == ' ':
+                    tablero[-1][2] = Fore.RED + fichaJugador_1 
+                else:
+                    if tablero[-2][2] == ' ':
+                        tablero[-2][2] = Fore.RED + fichaJugador_1 
+                    else:
+                        if tablero[-3][2] == ' ':
+                            tablero[-3][2] = Fore.RED + fichaJugador_1 
+                        else:
+                            if tablero[-4][2] == ' ':
+                                tablero[-4][2] = Fore.RED + fichaJugador_1
+                            else:
+                                if tablero[-5][2] == ' ':
+                                    tablero[-5][2] = Fore.RED + fichaJugador_1
+                                else:
+                                    if tablero[-6][2] == ' ':
+                                        tablero[-6][2] = Fore.RED + fichaJugador_1
+                                    else:
+                                        if tablero[-7][2] == ' ':
+                                            tablero[-7][2] = Fore.RED + fichaJugador_1
+                                        else:
+                                            if tablero[-8][2] == ' ':
+                                                tablero[-8][2] = Fore.RED + fichaJugador_1
+                                            else:
+                                                if tablero[-9][2] == ' ':
+                                                    tablero[-9][2] = Fore.RED + fichaJugador_1
+                                                else:
+                                                    if tablero[-10][2] == ' ':
+                                                        tablero[-10][2] = Fore.RED + fichaJugador_1
+            elif columnaEscogida == 4:
+                if tablero[-1][3] == ' ':
+                    tablero[-1][3] = Fore.RED + fichaJugador_1 
+                else:
+                    if tablero[-2][3] == ' ':
+                        tablero[-2][3] = Fore.RED + fichaJugador_1 
+                    else:
+                        if tablero[-3][3] == ' ':
+                            tablero[-3][3] = Fore.RED + fichaJugador_1 
+                        else:
+                            if tablero[-4][3] == ' ':
+                                tablero[-4][3] = Fore.RED + fichaJugador_1
+                            else:
+                                if tablero[-5][3] == ' ':
+                                    tablero[-5][3] = Fore.RED + fichaJugador_1
+                                else:
+                                    if tablero[-6][3] == ' ':
+                                        tablero[-6][3] = Fore.RED + fichaJugador_1
+                                    else:
+                                        if tablero[-7][3] == ' ':
+                                            tablero[-7][3] = Fore.RED + fichaJugador_1
+                                        else:
+                                            if tablero[-8][3] == ' ':
+                                                tablero[-8][3] = Fore.RED + fichaJugador_1
+                                            else:
+                                                if tablero[-9][3] == ' ':
+                                                    tablero[-9][3] = Fore.RED + fichaJugador_1
+                                                else:
+                                                    if tablero[-10][3] == ' ':
+                                                        tablero[-10][3] = Fore.RED + fichaJugador_1
+            elif columnaEscogida == 5:
+                if tablero[-1][4] == ' ':
+                    tablero[-1][4] = Fore.RED + fichaJugador_1 
+                else:
+                    if tablero[-2][4] == ' ':
+                        tablero[-2][4] = Fore.RED + fichaJugador_1 
+                    else:
+                        if tablero[-3][4] == ' ':
+                            tablero[-3][4] = Fore.RED + fichaJugador_1 
+                        else:
+                            if tablero[-4][4] == ' ':
+                                tablero[-4][4] = Fore.RED + fichaJugador_1
+                            else:
+                                if tablero[-5][4] == ' ':
+                                    tablero[-5][4] = Fore.RED + fichaJugador_1
+                                else:
+                                    if tablero[-6][4] == ' ':
+                                        tablero[-6][4] = Fore.RED + fichaJugador_1
+                                    else:
+                                        if tablero[-7][4] == ' ':
+                                            tablero[-7][4] = Fore.RED + fichaJugador_1
+                                        else:
+                                            if tablero[-8][4] == ' ':
+                                                tablero[-8][4] = Fore.RED + fichaJugador_1
+                                            else:
+                                                if tablero[-9][4] == ' ':
+                                                    tablero[-9][4] = Fore.RED + fichaJugador_1
+                                                else:
+                                                    if tablero[-10][4] == ' ':
+                                                        tablero[-10][4] = Fore.RED + fichaJugador_1
+            elif columnaEscogida == 6:
+                if tablero[-1][5] == ' ':
+                    tablero[-1][5] = Fore.RED + fichaJugador_1 
+                else:
+                    if tablero[-2][5] == ' ':
+                        tablero[-2][5] = Fore.RED + fichaJugador_1 
+                    else:
+                        if tablero[-3][5] == ' ':
+                            tablero[-3][5] = Fore.RED + fichaJugador_1 
+                        else:
+                            if tablero[-4][5] == ' ':
+                                tablero[-4][5] = Fore.RED + fichaJugador_1
+                            else:
+                                if tablero[-5][5] == ' ':
+                                    tablero[-5][5] = Fore.RED + fichaJugador_1
+                                else:
+                                    if tablero[-6][5] == ' ':
+                                        tablero[-6][5] = Fore.RED + fichaJugador_1
+                                    else:
+                                        if tablero[-7][5] == ' ':
+                                            tablero[-7][5] = Fore.RED + fichaJugador_1
+                                        else:
+                                            if tablero[-8][5] == ' ':
+                                                tablero[-8][5] = Fore.RED + fichaJugador_1
+                                            else:
+                                                if tablero[-9][5] == ' ':
+                                                    tablero[-9][5] = Fore.RED + fichaJugador_1
+                                                else:
+                                                    if tablero[-10][5] == ' ':
+                                                        tablero[-10][5] = Fore.RED + fichaJugador_1
+            elif columnaEscogida == 7:
+                if tablero[-1][6] == ' ':
+                    tablero[-1][6] = Fore.RED + fichaJugador_1 
+                else:
+                    if tablero[-2][6] == ' ':
+                        tablero[-2][6] = Fore.RED + fichaJugador_1 
+                    else:
+                        if tablero[-3][6] == ' ':
+                            tablero[-3][6] = Fore.RED + fichaJugador_1 
+                        else:
+                            if tablero[-4][6] == ' ':
+                                tablero[-4][6] = Fore.RED + fichaJugador_1
+                            else:
+                                if tablero[-5][6] == ' ':
+                                    tablero[-5][6] = Fore.RED + fichaJugador_1
+                                else:
+                                    if tablero[-6][6] == ' ':
+                                        tablero[-6][6] = Fore.RED + fichaJugador_1
+                                    else:
+                                        if tablero[-7][6] == ' ':
+                                            tablero[-7][6] = Fore.RED + fichaJugador_1
+                                        else:
+                                            if tablero[-8][6] == ' ':
+                                                tablero[-8][6] = Fore.RED + fichaJugador_1
+                                            else:
+                                                if tablero[-9][6] == ' ':
+                                                    tablero[-9][6] = Fore.RED + fichaJugador_1
+                                                else:
+                                                    if tablero[-10][6] == ' ':
+                                                        tablero[-10][6] = Fore.RED + fichaJugador_1
+            elif columnaEscogida == 8:
+                if tablero[-1][7] == ' ':
+                    tablero[-1][7] = Fore.RED + fichaJugador_1 
+                else:
+                    if tablero[-2][7] == ' ':
+                        tablero[-2][7] = Fore.RED + fichaJugador_1 
+                    else:
+                        if tablero[-3][7] == ' ':
+                            tablero[-3][7] = Fore.RED + fichaJugador_1 
+                        else:
+                            if tablero[-4][7] == ' ':
+                                tablero[-4][7] = Fore.RED + fichaJugador_1
+                            else:
+                                if tablero[-5][7] == ' ':
+                                    tablero[-5][7] = Fore.RED + fichaJugador_1
+                                else:
+                                    if tablero[-6][7] == ' ':
+                                        tablero[-6][7] = Fore.RED + fichaJugador_1
+                                    else:
+                                        if tablero[-7][7] == ' ':
+                                            tablero[-7][7] = Fore.RED + fichaJugador_1
+                                        else:
+                                            if tablero[-8][7] == ' ':
+                                                tablero[-8][7] = Fore.RED + fichaJugador_1
+                                            else:
+                                                if tablero[-9][7] == ' ':
+                                                    tablero[-9][7] = Fore.RED + fichaJugador_1
+                                                else:
+                                                    if tablero[-10][7] == ' ':
+                                                        tablero[-10][7] = Fore.RED + fichaJugador_1
+            elif columnaEscogida == 9:
+                if tablero[-1][8] == ' ':
+                    tablero[-1][8] = Fore.RED + fichaJugador_1 
+                else:
+                    if tablero[-2][8] == ' ':
+                        tablero[-2][8] = Fore.RED + fichaJugador_1 
+                    else:
+                        if tablero[-3][8] == ' ':
+                            tablero[-3][8] = Fore.RED + fichaJugador_1 
+                        else:
+                            if tablero[-4][8] == ' ':
+                                tablero[-4][8] = Fore.RED + fichaJugador_1
+                            else:
+                                if tablero[-5][8] == ' ':
+                                    tablero[-5][8] = Fore.RED + fichaJugador_1
+                                else:
+                                    if tablero[-6][8] == ' ':
+                                        tablero[-6][8] = Fore.RED + fichaJugador_1
+                                    else:
+                                        if tablero[-7][8] == ' ':
+                                            tablero[-7][8] = Fore.RED + fichaJugador_1
+                                        else:
+                                            if tablero[-8][8] == ' ':
+                                                tablero[-8][8] = Fore.RED + fichaJugador_1
+                                            else:
+                                                if tablero[-9][8] == ' ':
+                                                    tablero[-9][8] = Fore.RED + fichaJugador_1
+                                                else:
+                                                    if tablero[-10][8] == ' ':
+                                                        tablero[-10][8] = Fore.RED + fichaJugador_1
+            elif columnaEscogida == 10:
+                if tablero[-1][9] == ' ':
+                    tablero[-1][9] = Fore.RED + fichaJugador_1 
+                else:
+                    if tablero[-2][9] == ' ':
+                        tablero[-2][9] = Fore.RED + fichaJugador_1 
+                    else:
+                        if tablero[-3][9] == ' ':
+                            tablero[-3][9] = Fore.RED + fichaJugador_1 
+                        else:
+                            if tablero[-4][9] == ' ':
+                                tablero[-4][9] = Fore.RED + fichaJugador_1
+                            else:
+                                if tablero[-5][9] == ' ':
+                                    tablero[-5][9] = Fore.RED + fichaJugador_1
+                                else:
+                                    if tablero[-6][9] == ' ':
+                                        tablero[-6][9] = Fore.RED + fichaJugador_1
+                                    else:
+                                        if tablero[-7][9] == ' ':
+                                            tablero[-7][9] = Fore.RED + fichaJugador_1
+                                        else:
+                                            if tablero[-8][9] == ' ':
+                                                tablero[-8][9] = Fore.RED + fichaJugador_1
+                                            else:
+                                                if tablero[-9][9] == ' ':
+                                                    tablero[-9][9] = Fore.RED + fichaJugador_1
+                                                else:
+                                                    if tablero[-10][9] == ' ':
+                                                        tablero[-10][9] = Fore.RED + fichaJugador_1
+                                                                                                                                                                                                                                                                                                            
         except AssertionError:
             print()
-            print(Fore.RESET + '=-=-= Por favor, escoge una columna que pertenezca al tablero. =-=-=')
+            print(Fore.RED + '=-=-= Por favor, escoge una columna que pertenezca al tablero. =-=-=,',end=Fore.RESET + '\n')
         except IndexError:
-            print(Fore.RESET + 'Se ha llegado al limite superior de la columna.')
+            print(Fore.RED + 'Se ha llegado al limite superior de la columna.',end= Fore.RESET + '\n')
 
             
     elif jugador == 2:
@@ -172,29 +455,313 @@ def accionesJugadores(jugador, tablero):   # esta funcion es propia para jugar J
             columnaEscogida = int(input('Seleccione la columna donde quiera colocar su ficha:'))
             fichaJugador_2 = 'O'
             assert columnaEscogida in range(len(tablero[-1]) + 1)            # OPTIMIZAR EL CODIGO
-            if tablero[-1][columnaEscogida] == ' ':                          # A partir de la segunda fila, no se ingresan X
-                tablero[-1][columnaEscogida] = Fore.GREEN + fichaJugador_2
-            elif tablero[-1][columnaEscogida] != ' ':
-                tablero[-2][columnaEscogida] = Fore.GREEN + fichaJugador_2
-            elif tablero[-2][columnaEscogida] != ' ':
-                tablero[-3][columnaEscogida] = Fore.GREEN + fichaJugador_2
-            elif tablero[-3][columnaEscogida] != ' ':
-                tablero[-4][columnaEscogida] = Fore.GREEN + fichaJugador_2
-            elif tablero[-4][columnaEscogida] != ' ':
-                tablero[-5][columnaEscogida] = Fore.GREEN + fichaJugador_2
-            elif tablero[-5][columnaEscogida] != ' ':
-                tablero[-6][columnaEscogida] = Fore.GREEN + fichaJugador_2
-            elif tablero[-6][columnaEscogida] != ' ':
-                tablero[-7][columnaEscogida] = Fore.GREEN + fichaJugador_2
-            elif tablero[-8][columnaEscogida] != ' ':
-                tablero[-9][columnaEscogida] = Fore.GREEN + fichaJugador_2
-            elif tablero[-9][columnaEscogida] != ' ':
-                tablero[-10][columnaEscogida] = Fore.GREEN + fichaJugador_2 
+            if columnaEscogida == 1:
+                if tablero[-1][0] == ' ':
+                    tablero[-1][0] = Fore.GREEN + fichaJugador_2
+                else:
+                    if tablero[-2][0] == ' ':
+                        tablero[-2][0] = Fore.GREEN + fichaJugador_2 
+                    else:
+                        if tablero[-3][0] == ' ':
+                            tablero[-3][0] = Fore.GREEN + fichaJugador_2 
+                        else:
+                            if tablero[-4][0] == ' ':
+                                tablero[-4][0] = Fore.GREEN + fichaJugador_2
+                            else:
+                                if tablero[-5][0] == ' ':
+                                    tablero[-5][0] = Fore.GREEN + fichaJugador_2
+                                else:
+                                    if tablero[-6][0] == ' ':
+                                        tablero[-6][0] = Fore.GREEN + fichaJugador_2
+                                    else:
+                                        if tablero[-7][0] == ' ':
+                                            tablero[-7][0] = Fore.GREEN + fichaJugador_2
+                                        else:
+                                            if tablero[-8][0] == ' ':
+                                                tablero[-8][0] = Fore.GREEN + fichaJugador_2
+                                            else:
+                                                if tablero[-9][0] == ' ':
+                                                    tablero[-9][0] = Fore.GREEN + fichaJugador_2
+                                                else:
+                                                    if tablero[-10][0] == ' ':
+                                                        tablero[-10][0] = Fore.GREEN + fichaJugador_2
+            elif columnaEscogida == 2:
+                if tablero[-1][1] == ' ':
+                    tablero[-1][1] = Fore.GREEN + fichaJugador_2 
+                else:
+                    if tablero[-2][1] == ' ':
+                        tablero[-2][1] = Fore.GREEN + fichaJugador_2 
+                    else:
+                        if tablero[-3][1] == ' ':
+                            tablero[-3][1] = Fore.GREEN + fichaJugador_2 
+                        else:
+                            if tablero[-4][1] == ' ':
+                                tablero[-4][1] = Fore.GREEN + fichaJugador_2
+                            else:
+                                if tablero[-5][1] == ' ':
+                                    tablero[-5][1] = Fore.GREEN + fichaJugador_2
+                                else:
+                                    if tablero[-6][1] == ' ':
+                                        tablero[-6][1] = Fore.GREEN + fichaJugador_2
+                                    else:
+                                        if tablero[-7][1] == ' ':
+                                            tablero[-7][1] = Fore.GREEN + fichaJugador_2
+                                        else:
+                                            if tablero[-8][1] == ' ':
+                                                tablero[-8][1] = Fore.GREEN + fichaJugador_2
+                                            else:
+                                                if tablero[-9][1] == ' ':
+                                                    tablero[-9][1] = Fore.GREEN + fichaJugador_2
+                                                else:
+                                                    if tablero[-10][1] == ' ':
+                                                        tablero[-10][1] = Fore.GREEN + fichaJugador_2
+            elif columnaEscogida == 3:
+                if tablero[-1][2] == ' ':
+                    tablero[-1][2] = Fore.GREEN + fichaJugador_2 
+                else:
+                    if tablero[-2][2] == ' ':
+                        tablero[-2][2] = Fore.GREEN + fichaJugador_2 
+                    else:
+                        if tablero[-3][2] == ' ':
+                            tablero[-3][2] = Fore.GREEN + fichaJugador_2 
+                        else:
+                            if tablero[-4][2] == ' ':
+                                tablero[-4][2] = Fore.GREEN + fichaJugador_2
+                            else:
+                                if tablero[-5][2] == ' ':
+                                    tablero[-5][2] = Fore.GREEN + fichaJugador_2
+                                else:
+                                    if tablero[-6][2] == ' ':
+                                        tablero[-6][2] = Fore.GREEN + fichaJugador_2
+                                    else:
+                                        if tablero[-7][2] == ' ':
+                                            tablero[-7][2] = Fore.GREEN + fichaJugador_2
+                                        else:
+                                            if tablero[-8][2] == ' ':
+                                                tablero[-8][2] = Fore.GREEN + fichaJugador_2
+                                            else:
+                                                if tablero[-9][2] == ' ':
+                                                    tablero[-9][2] = Fore.GREEN + fichaJugador_2
+                                                else:
+                                                    if tablero[-10][2] == ' ':
+                                                        tablero[-10][2] = Fore.GREEN + fichaJugador_2
+            elif columnaEscogida == 4:
+                if tablero[-1][3] == ' ':
+                    tablero[-1][3] = Fore.GREEN + fichaJugador_2 
+                else:
+                    if tablero[-2][3] == ' ':
+                        tablero[-2][3] = Fore.GREEN + fichaJugador_2 
+                    else:
+                        if tablero[-3][3] == ' ':
+                            tablero[-3][3] = Fore.GREEN + fichaJugador_2 
+                        else:
+                            if tablero[-4][3] == ' ':
+                                tablero[-4][3] = Fore.GREEN + fichaJugador_2
+                            else:
+                                if tablero[-5][3] == ' ':
+                                    tablero[-5][3] = Fore.GREEN + fichaJugador_2
+                                else:
+                                    if tablero[-6][3] == ' ':
+                                        tablero[-6][3] = Fore.GREEN + fichaJugador_2
+                                    else:
+                                        if tablero[-7][3] == ' ':
+                                            tablero[-7][3] = Fore.GREEN + fichaJugador_2
+                                        else:
+                                            if tablero[-8][3] == ' ':
+                                                tablero[-8][3] = Fore.GREEN + fichaJugador_2
+                                            else:
+                                                if tablero[-9][3] == ' ':
+                                                    tablero[-9][3] = Fore.GREEN + fichaJugador_2
+                                                else:
+                                                    if tablero[-10][3] == ' ':
+                                                        tablero[-10][3] = Fore.GREEN + fichaJugador_2
+            elif columnaEscogida == 5:
+                if tablero[-1][4] == ' ':
+                    tablero[-1][4] = Fore.GREEN + fichaJugador_2 
+                else:
+                    if tablero[-2][4] == ' ':
+                        tablero[-2][4] = Fore.GREEN + fichaJugador_2 
+                    else:
+                        if tablero[-3][4] == ' ':
+                            tablero[-3][4] = Fore.GREEN + fichaJugador_2 
+                        else:
+                            if tablero[-4][4] == ' ':
+                                tablero[-4][4] = Fore.GREEN + fichaJugador_2
+                            else:
+                                if tablero[-5][4] == ' ':
+                                    tablero[-5][4] = Fore.GREEN + fichaJugador_2
+                                else:
+                                    if tablero[-6][4] == ' ':
+                                        tablero[-6][4] = Fore.GREEN + fichaJugador_2
+                                    else:
+                                        if tablero[-7][4] == ' ':
+                                            tablero[-7][4] = Fore.GREEN + fichaJugador_2
+                                        else:
+                                            if tablero[-8][4] == ' ':
+                                                tablero[-8][4] = Fore.GREEN + fichaJugador_2
+                                            else:
+                                                if tablero[-9][4] == ' ':
+                                                    tablero[-9][4] = Fore.GREEN + fichaJugador_2
+                                                else:
+                                                    if tablero[-10][4] == ' ':
+                                                        tablero[-10][4] = Fore.GREEN + fichaJugador_2
+            elif columnaEscogida == 6:
+                if tablero[-1][5] == ' ':
+                    tablero[-1][5] = Fore.GREEN + fichaJugador_2 
+                else:
+                    if tablero[-2][5] == ' ':
+                        tablero[-2][5] = Fore.GREEN + fichaJugador_2 
+                    else:
+                        if tablero[-3][5] == ' ':
+                            tablero[-3][5] = Fore.GREEN + fichaJugador_2 
+                        else:
+                            if tablero[-4][5] == ' ':
+                                tablero[-4][5] = Fore.GREEN + fichaJugador_2
+                            else:
+                                if tablero[-5][5] == ' ':
+                                    tablero[-5][5] = Fore.GREEN + fichaJugador_2
+                                else:
+                                    if tablero[-6][5] == ' ':
+                                        tablero[-6][5] = Fore.GREEN + fichaJugador_2
+                                    else:
+                                        if tablero[-7][5] == ' ':
+                                            tablero[-7][5] = Fore.GREEN + fichaJugador_2
+                                        else:
+                                            if tablero[-8][5] == ' ':
+                                                tablero[-8][5] = Fore.GREEN + fichaJugador_2
+                                            else:
+                                                if tablero[-9][5] == ' ':
+                                                    tablero[-9][5] = Fore.GREEN + fichaJugador_2
+                                                else:
+                                                    if tablero[-10][5] == ' ':
+                                                        tablero[-10][5] = Fore.GREEN + fichaJugador_2
+            elif columnaEscogida == 7:
+                if tablero[-1][6] == ' ':
+                    tablero[-1][6] = Fore.GREEN + fichaJugador_2 
+                else:
+                    if tablero[-2][6] == ' ':
+                        tablero[-2][6] = Fore.GREEN + fichaJugador_2 
+                    else:
+                        if tablero[-3][6] == ' ':
+                            tablero[-3][6] = Fore.GREEN + fichaJugador_2 
+                        else:
+                            if tablero[-4][6] == ' ':
+                                tablero[-4][6] = Fore.GREEN + fichaJugador_2
+                            else:
+                                if tablero[-5][6] == ' ':
+                                    tablero[-5][6] = Fore.GREEN + fichaJugador_2
+                                else:
+                                    if tablero[-6][6] == ' ':
+                                        tablero[-6][6] = Fore.GREEN + fichaJugador_2
+                                    else:
+                                        if tablero[-7][6] == ' ':
+                                            tablero[-7][6] = Fore.GREEN + fichaJugador_2
+                                        else:
+                                            if tablero[-8][6] == ' ':
+                                                tablero[-8][6] = Fore.GREEN + fichaJugador_2
+                                            else:
+                                                if tablero[-9][6] == ' ':
+                                                    tablero[-9][6] = Fore.GREEN + fichaJugador_2
+                                                else:
+                                                    if tablero[-10][6] == ' ':
+                                                        tablero[-10][6] = Fore.GREEN + fichaJugador_2
+            elif columnaEscogida == 8:
+                if tablero[-1][7] == ' ':
+                    tablero[-1][7] = Fore.GREEN + fichaJugador_2 
+                else:
+                    if tablero[-2][7] == ' ':
+                        tablero[-2][7] = Fore.GREEN + fichaJugador_2 
+                    else:
+                        if tablero[-3][7] == ' ':
+                            tablero[-3][7] = Fore.GREEN + fichaJugador_2 
+                        else:
+                            if tablero[-4][7] == ' ':
+                                tablero[-4][7] = Fore.GREEN + fichaJugador_2
+                            else:
+                                if tablero[-5][7] == ' ':
+                                    tablero[-5][7] = Fore.GREEN + fichaJugador_2
+                                else:
+                                    if tablero[-6][7] == ' ':
+                                        tablero[-6][7] = Fore.GREEN + fichaJugador_2
+                                    else:
+                                        if tablero[-7][7] == ' ':
+                                            tablero[-7][7] = Fore.GREEN + fichaJugador_2
+                                        else:
+                                            if tablero[-8][7] == ' ':
+                                                tablero[-8][7] = Fore.GREEN + fichaJugador_2
+                                            else:
+                                                if tablero[-9][7] == ' ':
+                                                    tablero[-9][7] = Fore.GREEN + fichaJugador_2
+                                                else:
+                                                    if tablero[-10][7] == ' ':
+                                                        tablero[-10][7] = Fore.GREEN + fichaJugador_2
+            elif columnaEscogida == 9:
+                if tablero[-1][8] == ' ':
+                    tablero[-1][8] = Fore.GREEN + fichaJugador_2 
+                else:
+                    if tablero[-2][8] == ' ':
+                        tablero[-2][8] = Fore.GREEN + fichaJugador_2 
+                    else:
+                        if tablero[-3][8] == ' ':
+                            tablero[-3][8] = Fore.GREEN + fichaJugador_2 
+                        else:
+                            if tablero[-4][8] == ' ':
+                                tablero[-4][8] = Fore.GREEN + fichaJugador_2
+                            else:
+                                if tablero[-5][8] == ' ':
+                                    tablero[-5][8] = Fore.GREEN + fichaJugador_2
+                                else:
+                                    if tablero[-6][8] == ' ':
+                                        tablero[-6][8] = Fore.GREEN + fichaJugador_2
+                                    else:
+                                        if tablero[-7][8] == ' ':
+                                            tablero[-7][8] = Fore.GREEN + fichaJugador_2
+                                        else:
+                                            if tablero[-8][8] == ' ':
+                                                tablero[-8][8] = Fore.GREEN + fichaJugador_2
+                                            else:
+                                                if tablero[-9][8] == ' ':
+                                                    tablero[-9][8] = Fore.GREEN + fichaJugador_2
+                                                else:
+                                                    if tablero[-10][8] == ' ':
+                                                        tablero[-10][8] = Fore.GREEN + fichaJugador_2
+            elif columnaEscogida == 10:
+                if tablero[-1][9] == ' ':
+                    tablero[-1][9] = Fore.GREEN + fichaJugador_2 
+                else:
+                    if tablero[-2][9] == ' ':
+                        tablero[-2][9] = Fore.GREEN + fichaJugador_2 
+                    else:
+                        if tablero[-3][9] == ' ':
+                            tablero[-3][9] = Fore.GREEN + fichaJugador_2 
+                        else:
+                            if tablero[-4][9] == ' ':
+                                tablero[-4][9] = Fore.GREEN + fichaJugador_2
+                            else:
+                                if tablero[-5][9] == ' ':
+                                    tablero[-5][9] = Fore.GREEN + fichaJugador_2
+                                else:
+                                    if tablero[-6][9] == ' ':
+                                        tablero[-6][9] = Fore.GREEN + fichaJugador_2
+                                    else:
+                                        if tablero[-7][9] == ' ':
+                                            tablero[-7][9] = Fore.GREEN + fichaJugador_2
+                                        else:
+                                            if tablero[-8][9] == ' ':
+                                                tablero[-8][9] = Fore.GREEN + fichaJugador_2
+                                            else:
+                                                if tablero[-9][9] == ' ':
+                                                    tablero[-9][9] = Fore.GREEN + fichaJugador_2
+                                                else:
+                                                    if tablero[-10][9] == ' ':
+                                                        tablero[-10][9] = Fore.GREEN + fichaJugador_2
+                                                                                                        
         except AssertionError:
             print()
             print('=-=-= Por favor, escoge una columna que pertenezca al tablero. =-=-=')
         except IndexError:
-            print('Se ha llegado al limite superior de la columna.')
+            print('=-=-= Por favor, escoge una columna que pertenezca al tablero. =-=-=')
+            #print('Se ha llegado al limite superior de la columna.')
         
 
 def siguienteJugador(jugadorActual):
@@ -295,9 +862,9 @@ def mostrarTablero(tablero,numeroTurnos):
         for item in tablero:     # Es por esto que incluyo un bloque try: except: aqui, pues en el caso de que no reciba el argumento 
             print('|',end='')    # del tablero, no podemos dejar que el programa falle.
             for columna in item:
-                print(Fore.RESET + str(columna),end=Fore.RESET + '|')
+                print(columna,end=Fore.RESET + '|')
             else:
-                print(Fore.RESET + '',end='\n')
+                print('',end='\n')
         
     except AssertionError:
         pass
