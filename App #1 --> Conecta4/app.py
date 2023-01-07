@@ -139,29 +139,28 @@ def accionesJugadores(jugador, tablero):   # esta funcion es propia para jugar J
             fichaJugador_1 = 'X'
             assert columnaEscogida in range(len(tablero[-1]) + 1)            # OPTIMIZAR EL CODIGO
             if tablero[-1][columnaEscogida] == ' ':                          # A partir de la segunda fila, no se ingresan X
-                tablero[-1][columnaEscogida] = fichaJugador_1                # Si hay una X en una columna y pongo una O, se sustituye la X por la O. SOLUCIONAR ESTO.
+                tablero[-1][columnaEscogida] = Fore.RED + fichaJugador_1                # Si hay una X en una columna y pongo una O, se sustituye la X por la O. SOLUCIONAR ESTO.
             elif tablero[-1][columnaEscogida] != ' ':
-                tablero[-2][columnaEscogida] = fichaJugador_1
+                tablero[-2][columnaEscogida] = Fore.RED + fichaJugador_1
             elif tablero[-2][columnaEscogida] != ' ':
-                tablero[-3][columnaEscogida] = fichaJugador_1
+                tablero[-3][columnaEscogida] = Fore.RED + fichaJugador_1
             elif tablero[-3][columnaEscogida] != ' ':
-                tablero[-4][columnaEscogida] = fichaJugador_1
+                tablero[-4][columnaEscogida] = Fore.RED + fichaJugador_1
             elif tablero[-4][columnaEscogida] != ' ':
-                tablero[-5][columnaEscogida] = fichaJugador_1
+                tablero[-5][columnaEscogida] = Fore.RED + fichaJugador_1
             elif tablero[-5][columnaEscogida] != ' ':
-                tablero[-6][columnaEscogida] = fichaJugador_1
+                tablero[-6][columnaEscogida] = Fore.RED + fichaJugador_1
             elif tablero[-6][columnaEscogida] != ' ':
-                tablero[-7][columnaEscogida] = fichaJugador_1
+                tablero[-7][columnaEscogida] = Fore.RED + fichaJugador_1
             elif tablero[-8][columnaEscogida] != ' ':
-                tablero[-9][columnaEscogida] = fichaJugador_1
+                tablero[-9][columnaEscogida] = Fore.RED + fichaJugador_1
             elif tablero[-9][columnaEscogida] != ' ':
-                tablero[-10][columnaEscogida] = fichaJugador_1
-                
+                tablero[-10][columnaEscogida] = Fore.RED + fichaJugador_1
         except AssertionError:
             print()
-            print('=-=-= Por favor, escoge una columna que pertenezca al tablero. =-=-=')
+            print(Fore.RESET + '=-=-= Por favor, escoge una columna que pertenezca al tablero. =-=-=')
         except IndexError:
-            print('Se ha llegado al limite superior de la columna.')
+            print(Fore.RESET + 'Se ha llegado al limite superior de la columna.')
 
             
     elif jugador == 2:
@@ -174,24 +173,23 @@ def accionesJugadores(jugador, tablero):   # esta funcion es propia para jugar J
             fichaJugador_2 = 'O'
             assert columnaEscogida in range(len(tablero[-1]) + 1)            # OPTIMIZAR EL CODIGO
             if tablero[-1][columnaEscogida] == ' ':                          # A partir de la segunda fila, no se ingresan X
-                tablero[-1][columnaEscogida] = fichaJugador_2
+                tablero[-1][columnaEscogida] = Fore.GREEN + fichaJugador_2
             elif tablero[-1][columnaEscogida] != ' ':
-                tablero[-2][columnaEscogida] = fichaJugador_2
+                tablero[-2][columnaEscogida] = Fore.GREEN + fichaJugador_2
             elif tablero[-2][columnaEscogida] != ' ':
-                tablero[-3][columnaEscogida] = fichaJugador_2
+                tablero[-3][columnaEscogida] = Fore.GREEN + fichaJugador_2
             elif tablero[-3][columnaEscogida] != ' ':
-                tablero[-4][columnaEscogida] = fichaJugador_2
+                tablero[-4][columnaEscogida] = Fore.GREEN + fichaJugador_2
             elif tablero[-4][columnaEscogida] != ' ':
-                tablero[-5][columnaEscogida] = fichaJugador_2
+                tablero[-5][columnaEscogida] = Fore.GREEN + fichaJugador_2
             elif tablero[-5][columnaEscogida] != ' ':
-                tablero[-6][columnaEscogida] = fichaJugador_2
+                tablero[-6][columnaEscogida] = Fore.GREEN + fichaJugador_2
             elif tablero[-6][columnaEscogida] != ' ':
-                tablero[-7][columnaEscogida] = fichaJugador_2
+                tablero[-7][columnaEscogida] = Fore.GREEN + fichaJugador_2
             elif tablero[-8][columnaEscogida] != ' ':
-                tablero[-9][columnaEscogida] = fichaJugador_2
+                tablero[-9][columnaEscogida] = Fore.GREEN + fichaJugador_2
             elif tablero[-9][columnaEscogida] != ' ':
-                tablero[-10][columnaEscogida] = fichaJugador_2
-                
+                tablero[-10][columnaEscogida] = Fore.GREEN + fichaJugador_2 
         except AssertionError:
             print()
             print('=-=-= Por favor, escoge una columna que pertenezca al tablero. =-=-=')
@@ -290,16 +288,16 @@ def crearTablero():  #borrar?
             
   # -------------------------------------------------------------------------------------------------------------------------------- #
 
-def mostrarTablero(tablero,turnosRestantes):
+def mostrarTablero(tablero,numeroTurnos):
     try:
         assert tablero != None   # Esta funcion necesita que se le pase el argumento del tablero, pero es posible que en su creacion
         print()                  # no se cumplan algunas condiciones y se ejecute la excepcion AssertionError.
         for item in tablero:     # Es por esto que incluyo un bloque try: except: aqui, pues en el caso de que no reciba el argumento 
             print('|',end='')    # del tablero, no podemos dejar que el programa falle.
             for columna in item:
-                print(columna,end='|')
+                print(Fore.RESET + str(columna),end=Fore.RESET + '|')
             else:
-                print('',end='\n')
+                print(Fore.RESET + '',end='\n')
         
     except AssertionError:
         pass
@@ -383,8 +381,8 @@ def jugarPartida():
         
     while numeroTurnos > 0:
         mostrarTablero(tablero,numeroTurnos)
-        print('+-+-+-+-+-+-+-+-+-+-+-+-+-+')
-        print("NUMERO TURNOS RESTANTES: {}".format(numeroTurnos))
+        print(Fore.RESET + '+-+-+-+-+-+-+-+-+-+-+-+-+-+')
+        print(Fore.RESET + "NUMERO TURNOS RESTANTES: {}".format(numeroTurnos))
         accionesJugadores(jugadorActual, tablero)
         numeroTurnos -= 1
         if numeroTurnos == 0:
@@ -396,7 +394,7 @@ def jugarPartida():
             elif jugadorActual == Jugador_2:
                 jugadorActual = Jugador_1
         except AssertionError:
-            print("Ha ocurrido un error al cambiar de jugador.")
+            print(Fore.RESET + "Ha ocurrido un error al cambiar de jugador.")
     else:
         print()
         print('###')
