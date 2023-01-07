@@ -83,14 +83,25 @@ Ahora las fichas X del Jugador_1 se marcan en **ROJO**, y las fichas del Jugador
 <br>
 <br>
 
+<h2> COMMIT #7 --> Colores en las Fichas </h2>
+Se ha corregido un error que impedia insertar fichas a partir de la segunda columna desde debajo.
+
+Se ha corregido el error de seleccionar la columna para jugar. 
+Si ahora se selecciona como columna el valor '1', se insertara la ficha en la columna 1 (antes valor '1' insertaba en la columna 2).
+
+Si un jugador introduce una ficha en otra columna donde ya hay una ficha, esta se coloca por encima (antes, la ficha que introduciamos se sustituia por la que ya estaba, no se colocaba arriba).
+<br>
+<br>
+<br>
+<br>
+
 <h2> Futuros Commit's </h2>
-  - No se anaden fichas a partir de la segunda fila desde debajo.
-  
-  - Si existe una ficha en una columna y el otro jugador introduce una ficha suya en esa columna, la ficha existente se sustituye.
-  
+
   - Hay ocasiones en los que ciertos fallos no estan contemplados, y el programa rompe.
   
-  - Al introducir fichas, el numero de la columna no corresponde con el numero correcto ( numero 0 == columna 1; numero 1 == columna 2 ...)
+  - Controlar los excepts.
+  
+  - Si salta un except, deberia dejar al jugador la oportunidad de jugar otra vez y no saltar al siguiente turno (si pone un acolumna que no existe, o la columna ya esta llena hasta arriba).
   
   - IA
   
