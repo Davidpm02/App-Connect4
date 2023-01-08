@@ -95,6 +95,15 @@ Si un jugador introduce una ficha en otra columna donde ya hay una ficha, esta s
 <br>
 <br>
 
+<h2> COMMIT #8 --> Control de los turnos </h2>
+Ahora, si ocurre que durante el transcurso del turno de un jugador, este intenta introducir una ficha suya en una columna que no existe dentro del tablero, o en una columna que ya esta llena de fichas, NO SE PERDERA el turno del jugador, y podra volver a jugar para introducir su ficha en una columna que si sea valida.
+
+Lo que ocurria antes si esto pasaba, es que el jugador que habia generado la excepcion perdia su turno. El juego seguia su curso y le tocaba jugar al jugador contrario.
+<br>
+<br>
+<br>
+<br>
+
 <h2> Futuros Commit's </h2>
 
   - Hay ocasiones en los que ciertos fallos no estan contemplados, y el programa rompe.
