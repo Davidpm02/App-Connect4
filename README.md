@@ -104,6 +104,18 @@ Lo que ocurria antes si esto pasaba, es que el jugador que habia generado la exc
 <br>
 <br>
 
+<h2> COMMIT #9 --> Manejo de errores </h2>
+Es este commit he modificado el trascurso del programa cuando se introducian valores no permitidos en la creacion de la partida.
+
+Si bien es cierto que ya estaban implementadas estructuras de manejo de excepciones, segun iba creciendo la funcion principal de jugarPartida(),
+el programa no tenia ninguna ruta definida en el caso de haberse generado una excepcion.
+
+Ahora esto esta solucionado, y el programa avisa con un mensaje en la terminal cuando se ha generado alguna excepcion.
+<br>
+<br>
+<br>
+<br>
+
 <h2> Futuros Commit's </h2>
 
   - Hay ocasiones en los que ciertos fallos no estan contemplados, y el programa rompe.
