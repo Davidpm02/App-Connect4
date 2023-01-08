@@ -22,6 +22,10 @@ import time
 
 
 
+class ErrorExcepcion(Exception):
+    pass
+
+
 # Declaro las constantes del juego ----------------------
 
 
@@ -442,8 +446,10 @@ def accionesJugadores(jugador, tablero):   # esta funcion es propia para jugar J
         except AssertionError:
             print()
             print(Fore.RED + '=-=-= Por favor, escoge una columna que pertenezca al tablero. =-=-=,',end=Fore.RESET + '\n')
+            raise ErrorExcepcion
         except IndexError:
             print(Fore.RED + 'Se ha llegado al limite superior de la columna.',end= Fore.RESET + '\n')
+            raise ErrorExcepcion
 
             
     elif jugador == 2:
@@ -758,9 +764,11 @@ def accionesJugadores(jugador, tablero):   # esta funcion es propia para jugar J
                                                                                                         
         except AssertionError:
             print()
-            print('=-=-= Por favor, escoge una columna que pertenezca al tablero. =-=-=')
+            print(Fore.GREEN + '=-=-= Por favor, escoge una columna que pertenezca al tablero. =-=-=',end=Fore.RESET + '\n')
+            raise ErrorExcepcion
         except IndexError:
-            print('=-=-= Por favor, escoge una columna que pertenezca al tablero. =-=-=')
+            print(Fore.GREEN + '=-=-= Por favor, escoge una columna que pertenezca al tablero. =-=-=',end=Fore.RESET + '\n')
+            raise ErrorExcepcion
             #print('Se ha llegado al limite superior de la columna.')
         
 
@@ -948,20 +956,23 @@ def jugarPartida():
         
     while numeroTurnos > 0:
         mostrarTablero(tablero,numeroTurnos)
-        print(Fore.RESET + '+-+-+-+-+-+-+-+-+-+-+-+-+-+')
-        print(Fore.RESET + "NUMERO TURNOS RESTANTES: {}".format(numeroTurnos))
-        accionesJugadores(jugadorActual, tablero)
-        numeroTurnos -= 1
-        if numeroTurnos == 0:
-            mostrarTablero(tablero,numeroTurnos)            
+        print('+-+-+-+-+-+-+-+-+-+-+-+-+-+')
+        print("NUMERO TURNOS RESTANTES: {}".format(numeroTurnos))
         try:
-            assert jugadorActual == Jugador_1 or jugadorActual == Jugador_2
-            if jugadorActual == Jugador_1:
-                jugadorActual = Jugador_2
-            elif jugadorActual == Jugador_2:
-                jugadorActual = Jugador_1
-        except AssertionError:
-            print(Fore.RESET + "Ha ocurrido un error al cambiar de jugador.")
+            accionesJugadores(jugadorActual, tablero)
+            numeroTurnos -= 1
+            if numeroTurnos == 0:
+                mostrarTablero(tablero,numeroTurnos)            
+            try:
+                assert jugadorActual == Jugador_1 or jugadorActual == Jugador_2
+                if jugadorActual == Jugador_1:
+                    jugadorActual = Jugador_2
+                elif jugadorActual == Jugador_2:
+                    jugadorActual = Jugador_1
+            except AssertionError:
+                print("Ha ocurrido un error al cambiar de jugador.")
+        except ErrorExcepcion:  # Si ocurre una excepcion, se debe volver al principio del bucle while.
+            continue            # Esto es para que el jugador que se ha equivocado, no pierda su turno.
     else:
         print()
         print('###')
