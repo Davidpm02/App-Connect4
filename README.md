@@ -110,7 +110,7 @@ Lo que ocurria antes si esto pasaba, es que el jugador que habia generado la exc
   
   - Controlar los excepts.
   
-  - Si salta un except, deberia dejar al jugador la oportunidad de jugar otra vez y no saltar al siguiente turno (si pone un acolumna que no existe, o la columna ya esta llena hasta arriba).
+  - El juego debe detectar cuando se han unido 4 fichas del mismo tipo para que un jugador gane.
   
   - IA
   
