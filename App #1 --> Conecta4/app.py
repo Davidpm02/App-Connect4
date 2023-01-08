@@ -459,6 +459,7 @@ def accionesJugadores(jugador, tablero):   # esta funcion es propia para jugar J
             
             print()
             columnaEscogida = int(input('Seleccione la columna donde quiera colocar su ficha:'))
+            assert columnaEscogida != None
             fichaJugador_2 = 'O'
             assert columnaEscogida in range(len(tablero[-1]) + 1)            # OPTIMIZAR EL CODIGO
             if columnaEscogida == 1:
@@ -860,7 +861,34 @@ def crearTablero():  #borrar?
         lista = [tablero,numeroTurnos]
         return lista
         
+  # -------------------------------------------------------------------------------------------------------------------------------- #
+  
+
+def comprobarGanador(tablero):
+    """Esta funcion debe ser capaz de revisar todo el tablero para comprobar si existen 4 fichas consecutivas del mismo tipo.
+       En caso de ser positivo este resultado, la funcion detendra el juego y anunciara al ganador de la partida.
+       args:
+       - tablero --> la funcion debe recibir el tablero con las fichas colocadas para poder buscar las coincidencias."""
+    contadorFichas = 0
+    contadorIndice = 0
+    try:
+        assert contadorIndice < 6
+        for columna in tablero:
+            if tablero[-1][contadorIndice] == 'X':
+                contadorFichas += 1
+                contadorIndice += 1
+                if contadorFichas == 4:
+                    print('EL Jugador_1 HA GANADOR LA PARTIDA.')
+                    return True
+                
+                
+    except:
+        print('Ha ocurrido un error al comprobar el ganador de la partida.')
             
+    
+    
+          
+      
   # -------------------------------------------------------------------------------------------------------------------------------- #
 
 def mostrarTablero(tablero,numeroTurnos):
@@ -876,15 +904,7 @@ def mostrarTablero(tablero,numeroTurnos):
         
     except AssertionError:
         pass
-#Control de turnos
-def controlarTurnos(turnos):
-    try:
-        turnos -= 1
-        assert turnos > 0
-        return turnos
-    except AssertionError:
-        print("El juego ha terminado.")
-  
+
   # -------------------------------------------------------------------------------------------------------------------------------- #
   
 # Jugar partida
@@ -955,6 +975,9 @@ def jugarPartida():
         while numeroTurnos > 0:
             mostrarTablero(tablero,numeroTurnos)
             print('+-+-+-+-+-+-+-+-+-+-+-+-+-+')
+            resultado = comprobarGanador(tablero)
+            if resultado == True:
+                return 'Fin de la partida'
             print("NUMERO TURNOS RESTANTES: {}".format(numeroTurnos))
             try:
                 accionesJugadores(jugadorActual, tablero)
@@ -983,4 +1006,6 @@ def jugarPartida():
         print()
         
 if __name__ == '__main__':
-    jugarPartida()
+    print(jugarPartida())
+    
+    #Elimino la funcion controlarTurnos()
