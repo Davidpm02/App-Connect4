@@ -932,14 +932,12 @@ def jugarPartida():
             elif numeroTurnos >= 100:
                 print("El numero maximo de turnos permitidos es de 99.")
                 raise Exception
-                
-                
-                
+                      
     except Exception:
         print('Ha ocurrido algun fallo al crear la partida. Por favor, intentelo de nuevo.')
         print()
     
-    else:
+    else:               # Este bloque entero se ejuctara en el caso de que no haya ningu error durante la creacion del tablero.
         tablero = []
         contador = 0
         for fila in range(numeroFilas + 1):     # + 1 porque la fila inicial se usara como cabecera, que marcara el numero de columnas.
@@ -953,34 +951,36 @@ def jugarPartida():
                     tablero[fila].append(ESPACIO_VACIO)
                     
         print('**** EL TABLERO HA SIDO CREADO CON EXITO ****')
-        
-    while numeroTurnos > 0:
-        mostrarTablero(tablero,numeroTurnos)
-        print('+-+-+-+-+-+-+-+-+-+-+-+-+-+')
-        print("NUMERO TURNOS RESTANTES: {}".format(numeroTurnos))
-        try:
-            accionesJugadores(jugadorActual, tablero)
-            numeroTurnos -= 1
-            if numeroTurnos == 0:
-                mostrarTablero(tablero,numeroTurnos)            
+    try:   
+        while numeroTurnos > 0:
+            mostrarTablero(tablero,numeroTurnos)
+            print('+-+-+-+-+-+-+-+-+-+-+-+-+-+')
+            print("NUMERO TURNOS RESTANTES: {}".format(numeroTurnos))
             try:
-                assert jugadorActual == Jugador_1 or jugadorActual == Jugador_2
-                if jugadorActual == Jugador_1:
-                    jugadorActual = Jugador_2
-                elif jugadorActual == Jugador_2:
-                    jugadorActual = Jugador_1
-            except AssertionError:
-                print("Ha ocurrido un error al cambiar de jugador.")
-        except ErrorExcepcion:  # Si ocurre una excepcion, se debe volver al principio del bucle while.
-            continue            # Esto es para que el jugador que se ha equivocado, no pierda su turno.
-    else:
+                accionesJugadores(jugadorActual, tablero)
+                numeroTurnos -= 1
+                if numeroTurnos == 0:
+                    mostrarTablero(tablero,numeroTurnos)            
+                try:
+                    assert jugadorActual == Jugador_1 or jugadorActual == Jugador_2
+                    if jugadorActual == Jugador_1:
+                        jugadorActual = Jugador_2
+                    elif jugadorActual == Jugador_2:
+                        jugadorActual = Jugador_1
+                except AssertionError:
+                    print("Ha ocurrido un error al cambiar de jugador.")
+            except ErrorExcepcion:  # Si ocurre una excepcion, se debe volver al principio del bucle while.
+                continue            # Esto es para que el jugador que se ha equivocado, no pierda su turno.
+        else:
+            print()
+            print('###')
+            print("EL JUEGO HA TERMINADO.")
+            print('Jugador_1 y Jugador_2 quedan EMPATE.')
+            print('###')
+            print()
+    except UnboundLocalError:
+        print('No se ha podido crear la partida. Intentalo de nuevo.')
         print()
-        print('###')
-        print("EL JUEGO HA TERMINADO.")
-        print('Jugador_1 y Jugador_2 quedan EMPATE.')
-        print('###')
-        print()
-    
-
+        
 if __name__ == '__main__':
     jugarPartida()
