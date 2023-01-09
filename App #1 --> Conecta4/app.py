@@ -450,6 +450,9 @@ def accionesJugadores(jugador, tablero):   # esta funcion es propia para jugar J
         except IndexError:
             print(Fore.RED + 'Se ha llegado al limite superior de la columna.',end= Fore.RESET + '\n')
             raise ErrorExcepcion
+        except ValueError:
+            print(Fore.RED + 'Debes seleccionar el numero de la columna para jugar.',end =Fore.RESET + '\n')
+            raise ErrorExcepcion
 
             
     elif jugador == 2:
@@ -771,6 +774,9 @@ def accionesJugadores(jugador, tablero):   # esta funcion es propia para jugar J
             print(Fore.GREEN + '=-=-= Por favor, escoge una columna que pertenezca al tablero. =-=-=',end=Fore.RESET + '\n')
             raise ErrorExcepcion
             #print('Se ha llegado al limite superior de la columna.')
+        except ValueError:
+            print(Fore.GREEN + 'Debes seleccionar el numero de la columna para jugar.', end= Fore.RESET + '\n')
+            raise ErrorExcepcion
         
 
 def siguienteJugador(jugadorActual):
