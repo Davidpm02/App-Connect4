@@ -104,7 +104,7 @@ Lo que ocurria antes si esto pasaba, es que el jugador que habia generado la exc
 <br>
 <br>
 
-<h2> COMMIT #9 --> Manejo de errores </h2>
+<h2> COMMIT #9 --> Manejo de errores 1/2 </h2>
 Es este commit he modificado el trascurso del programa cuando se introducian valores no permitidos en la creacion de la partida.
 
 Si bien es cierto que ya estaban implementadas estructuras de manejo de excepciones, segun iba creciendo la funcion principal de jugarPartida(),
@@ -116,11 +116,18 @@ Ahora esto esta solucionado, y el programa avisa con un mensaje en la terminal c
 <br>
 <br>
 
+<h2> COMMIT #10 --> Manejo de errores 2/2 </h2>
+Ahora el programa controla todas las excepciones que se puedan generar al momento de el usuario interactuar con la partida.
+
+Los mensajes de aviso al causar una excepcion se marcan en color rojo cuando los genera el Jugador_1, y en color verde cuando los genera el Jugador_2.
+<br>
+<br>
+<br>
+<br>
+
 <h2> Futuros Commit's </h2>
 
-  - Hay ocasiones en los que ciertos fallos no estan contemplados, y el programa rompe.
-  
-  - Controlar los excepts.
+  - Incluir en la partida un boton ('Pulsa "k" para salir de la partida.') y generar un mensaje por pantalla y el fin del juego.
   
   - El juego debe detectar cuando se han unido 4 fichas del mismo tipo para que un jugador gane.
   
