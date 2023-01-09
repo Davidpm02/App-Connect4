@@ -125,8 +125,20 @@ Los mensajes de aviso al causar una excepcion se marcan en color rojo cuando los
 <br>
 <br>
 
-<h2> COMMIT #10 --> Insercion CONECTA </h2>
+<h2> COMMIT #11 --> Insercion CONECTA </h2>
 Estoy implementando la el funcionamiento de la funcion comprobarGanador(), que permitira contar el numero de fichas segun sea el turno de un jugador u otro para, caso de haber 4 fichas coincidentes unidas, detener el programa y avisar por pantalla con un mensaje personalizado.
+<br>
+<br>
+<br>
+<br>
+
+<h2> COMMIT #12 --> Insercion CONECTA </h2>
+He modificado la funcion de comprobarGanador().
+En teoria funciona pero:
+
+  -No detecta 4 fichas iguales en diferentes filas.
+  
+  -No detecta 4 fichas en diagonal
 <br>
 <br>
 <br>
