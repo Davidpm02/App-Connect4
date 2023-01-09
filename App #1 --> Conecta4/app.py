@@ -25,6 +25,12 @@ import time
 class ErrorExcepcion(Exception):
     pass
 
+class GanaJugador_1(Exception):
+    pass
+
+class GanaJugador_2(Exception):
+    pass
+
 
 # Declaro las constantes del juego ----------------------
 
@@ -864,40 +870,99 @@ def crearTablero():  #borrar?
                     tablero[fila].append(ESPACIO_VACIO)
                     
         print('**** EL TABLERO HA SIDO CREADO CON EXITO ****')  
+        print(tablero)
         lista = [tablero,numeroTurnos]
         return lista
         
   # -------------------------------------------------------------------------------------------------------------------------------- #
   
 
-def comprobarGanador(tablero):
+def comprobarGanador(tablero, jugadorActual):
     """Esta funcion debe ser capaz de revisar todo el tablero para comprobar si existen 4 fichas consecutivas del mismo tipo.
        En caso de ser positivo este resultado, la funcion detendra el juego y anunciara al ganador de la partida.
        args:
        - tablero --> la funcion debe recibir el tablero con las fichas colocadas para poder buscar las coincidencias."""
-    contadorFichas = 0
-    contadorIndice = 0
     try:
-        assert contadorIndice < 6
-        for columna in tablero:
-            if tablero[-1][contadorIndice] == 'X':
-                contadorFichas += 1
-                contadorIndice += 1
-                if contadorFichas == 4:
-                    print('EL Jugador_1 HA GANADOR LA PARTIDA.')
-                    return True
-                
-                
-    except:
-        print('Ha ocurrido un error al comprobar el ganador de la partida.')
+        if jugadorActual == Jugador_1:
+            contadorFichasJugador1 = 0
+            contadorIndice = 0
+            for fila in tablero[-1]:
+                if fila == '\x1b[31mX': # Haciendo pruebas vi que este string representa 'X' en el tablero.
+                    contadorFichasJugador1 += 1
+                    contadorIndice += 1
+                    if contadorFichasJugador1 == 4:
+                        raise
+                    
+                    if tablero[-2][0] == '\x1b[31mX':
+                        contadorFichasJugador1 +=1
+                        if contadorFichasJugador1 == 4:
+                            raise
+                        elif tablero[-3][0] == '\x1b[31mX':
+                            contadorFichasJugador1 +=1
+                            if contadorFichasJugador1 == 4:
+                                raise
+                            elif tablero[-4][0] == '\x1b[31mX':
+                                contadorFichasJugador1 +=1
+                                if contadorFichasJugador1 == 4:
+                                    raise
+                                elif tablero[-5][0] == '\x1b[31mX':
+                                    contadorFichasJugador1 +=1
+                                    if contadorFichasJugador1 == 4:
+                                        raise
+                                    elif tablero[-5][0] == '\x1b[31mX':
+                                        contadorFichasJugador1 +=1
+                                        if contadorFichasJugador1 == 4:
+                                            raise
+                                        elif tablero[-6][0] == '\x1b[31mX':
+                                            contadorFichasJugador1 +=1
+                                            if contadorFichasJugador1 == 4:
+                                                raise
+                                            elif tablero[-7][0] == '\x1b[31mX':
+                                                contadorFichasJugador1 +=1
+                                                if contadorFichasJugador1 == 4:
+                                                    raise
+                                                elif tablero[-8][0] == '\x1b[31mX':
+                                                    contadorFichasJugador1 +=1
+                                                    if contadorFichasJugador1 == 4:
+                                                        raise
+                                                    elif tablero[-9][0] == '\x1b[31mX':
+                                                        contadorFichasJugador1 +=1
+                                                        if contadorFichasJugador1 == 4:
+                                                            raise
+                                                        elif tablero[-10][0] == '\x1b[31mX':
+                                                            contadorFichasJugador1 +=1
+                                                            if contadorFichasJugador1 == 4:
+                                                                raise                     
+                else:
+                    contadorFichasJugador1 = 0         
+                        
+                        
+                        
+        elif jugadorActual == Jugador_2:
+            contadorFichasJugador2 = 0
+            contadorIndice = 0
+            for columna in tablero:
+                if tablero[-1][contadorIndice] == r'\x1b[32mO': # Igual que antes, este string representa 'O' en el tablero.
+                    contadorFichasJugador2 += 1
+                    contadorIndice += 1
+                    if contadorFichasJugador2 == 4:
+                        raise GanaJugador_2
             
+                
+    except IndexError:
+        print('Ha ocurrido un problema al elegir al ganador.')            
+    except:
+        if contadorFichasJugador1 == 4:
+            raise GanaJugador_1
+        elif contadorFichasJugador2 == 4:
+            raise GanaJugador_2
     
     
           
       
   # -------------------------------------------------------------------------------------------------------------------------------- #
 
-def mostrarTablero(tablero,numeroTurnos):
+def mostrarTablero(tablero):
     try:
         assert tablero != None   # Esta funcion necesita que se le pase el argumento del tablero, pero es posible que en su creacion
         print()                  # no se cumplan algunas condiciones y se ejecute la excepcion AssertionError.
@@ -974,22 +1039,20 @@ def jugarPartida():
                     contador +=1
             else:
                 for columna in range(numeroColumnas):
-                    tablero[fila].append(ESPACIO_VACIO)
-                    
+                    tablero[fila].append(ESPACIO_VACIO)           
         print('**** EL TABLERO HA SIDO CREADO CON EXITO ****')
     try:   
         while numeroTurnos > 0:
-            mostrarTablero(tablero,numeroTurnos)
+            mostrarTablero(tablero)
             print('+-+-+-+-+-+-+-+-+-+-+-+-+-+')
-            resultado = comprobarGanador(tablero)
-            if resultado == True:
-                return 'Fin de la partida'
             print("NUMERO TURNOS RESTANTES: {}".format(numeroTurnos))
             try:
                 accionesJugadores(jugadorActual, tablero)
+                comprobarGanador(tablero,jugadorActual)
                 numeroTurnos -= 1
                 if numeroTurnos == 0:
-                    mostrarTablero(tablero,numeroTurnos)            
+                    mostrarTablero(tablero,numeroTurnos)
+                    comprobarGanador(tablero,jugadorActual)            
                 try:
                     assert jugadorActual == Jugador_1 or jugadorActual == Jugador_2
                     if jugadorActual == Jugador_1:
@@ -1010,8 +1073,24 @@ def jugarPartida():
     except UnboundLocalError:
         print('No se ha podido crear la partida. Intentalo de nuevo.')
         print()
+    except GanaJugador_1:
+        print("#"*10)
+        mostrarTablero(tablero)
+        print()
+        print('Fin de la partida!')
+        print('EL Jugador_1 es el ganador de la partida!')
+        print()
+        print("#"*10)
+    except GanaJugador_2:
+        print("#"*10)
+        mostrarTablero(tablero)
+        print()
+        print('Fin de la partida!')
+        print('EL Jugador_2 es el ganador de la partida!')
+        print()
+        print("#"*10)
+        
         
 if __name__ == '__main__':
-    print(jugarPartida())
-    
+    jugarPartida()
     #Elimino la funcion controlarTurnos()
