@@ -25,6 +25,12 @@ import time
 class ErrorExcepcion(Exception):
     pass
 
+class PartidaJugador_1(Exception):
+    pass
+
+class PartidaJugador_2(Exception):
+    pass
+
 class GanaJugador_1(Exception):
     pass
 
@@ -882,79 +888,85 @@ def comprobarGanador(tablero, jugadorActual):
        En caso de ser positivo este resultado, la funcion detendra el juego y anunciara al ganador de la partida.
        args:
        - tablero --> la funcion debe recibir el tablero con las fichas colocadas para poder buscar las coincidencias."""
+    #Jugador_1
+    contadorFichasJugador1_Fila = 0
+    contadorFichasJugador1_Columna = 0
+    contadorFichasJugador1 = 0
+    #Jugador_2
+    contadorFichasJugador2_Fila = 0
+    contadorFichasJugador2_Columna = 0
+    contadorFichasJugador2 = 0
+    
+    
+    listaIndices = [-1,-2,-3,-4,-5,-6,-7,-8,-9,-10]
+    
+    
+    
     try:
         if jugadorActual == Jugador_1:
-            contadorFichasJugador1 = 0
-            contadorIndice = 0
-            for fila in tablero[-1]:
-                if fila == '\x1b[31mX': # Haciendo pruebas vi que este string representa 'X' en el tablero.
-                    contadorFichasJugador1 += 1
-                    contadorIndice += 1
-                    if contadorFichasJugador1 == 4:
-                        raise
-                    
-                    if tablero[-2][0] == '\x1b[31mX':
-                        contadorFichasJugador1 +=1
-                        if contadorFichasJugador1 == 4:
-                            raise
-                        elif tablero[-3][0] == '\x1b[31mX':
-                            contadorFichasJugador1 +=1
+                      
+            for num in listaIndices:    
+                for fila in tablero[num]:
+                    try:
+                        if tablero[num][fila] == '\x1b[31mX' and tablero[num+1][fila] == '\x1b[31mX':
+                            contadorFichasJugador1_Columna +=1
+                    except:
+                        contadorFichasJugador1_Columna = 0
+                    finally:  
+                        contadorFichasJugador1_Columna += 1   
+                        if fila == '\x1b[31mX': # Haciendo pruebas vi que este string representa 'X' en el tablero.
+                            contadorFichasJugador1_Fila += 1
+                            contadorFichasJugador1 = contadorFichasJugador1_Fila
                             if contadorFichasJugador1 == 4:
-                                raise
-                            elif tablero[-4][0] == '\x1b[31mX':
-                                contadorFichasJugador1 +=1
-                                if contadorFichasJugador1 == 4:
-                                    raise
-                                elif tablero[-5][0] == '\x1b[31mX':
-                                    contadorFichasJugador1 +=1
-                                    if contadorFichasJugador1 == 4:
-                                        raise
-                                    elif tablero[-5][0] == '\x1b[31mX':
-                                        contadorFichasJugador1 +=1
-                                        if contadorFichasJugador1 == 4:
-                                            raise
-                                        elif tablero[-6][0] == '\x1b[31mX':
-                                            contadorFichasJugador1 +=1
-                                            if contadorFichasJugador1 == 4:
-                                                raise
-                                            elif tablero[-7][0] == '\x1b[31mX':
-                                                contadorFichasJugador1 +=1
-                                                if contadorFichasJugador1 == 4:
-                                                    raise
-                                                elif tablero[-8][0] == '\x1b[31mX':
-                                                    contadorFichasJugador1 +=1
-                                                    if contadorFichasJugador1 == 4:
-                                                        raise
-                                                    elif tablero[-9][0] == '\x1b[31mX':
-                                                        contadorFichasJugador1 +=1
-                                                        if contadorFichasJugador1 == 4:
-                                                            raise
-                                                        elif tablero[-10][0] == '\x1b[31mX':
-                                                            contadorFichasJugador1 +=1
-                                                            if contadorFichasJugador1 == 4:
-                                                                raise                     
-                else:
-                    contadorFichasJugador1 = 0         
-                        
-                        
-                        
+                                raise PartidaJugador_1
+                        elif fila != '\x1b[31mX':
+                            contadorFichasJugador1_Fila = 0
+                            contadorFichasJugador1 = 0
+                            continue
+            else:
+                for num in listaIndices:
+                    contadorFichasJugador1 = contadorFichasJugador1_Columna
+                    if contadorFichasJugador1 == 4:
+                        raise PartidaJugador_1
+                    else:
+                        contadorFichasJugador1 = 0
+                    
         elif jugadorActual == Jugador_2:
-            contadorFichasJugador2 = 0
-            contadorIndice = 0
-            for columna in tablero:
-                if tablero[-1][contadorIndice] == r'\x1b[32mO': # Igual que antes, este string representa 'O' en el tablero.
-                    contadorFichasJugador2 += 1
-                    contadorIndice += 1
+                    
+            for num in listaIndices: 
+                for fila in tablero[num]:
+                    try:
+                        if tablero[num][fila] == '\x1b[32mO' and tablero[num+1][fila] == '\x1b[32mO':
+                            contadorFichasJugador2_Columna +=1
+                    except:
+                        contadorFichasJugador2_Columna = 0
+                    finally:
+                        contadorFichasJugador2_Columna +=1
+                        if fila == '\x1b[32mO': # Haciendo pruebas vi que este string representa 'X' en el tablero.
+                            contadorFichasJugador2_Fila += 1
+                            contadorFichasJugador2 = contadorFichasJugador2_Fila
+                            if contadorFichasJugador2 == 4:
+                                raise PartidaJugador_2
+                        elif fila != '\x1b[32mO':
+                            contadorFichasJugador2_Fila = 0
+                            contadorFichasJugador2 = 0
+                            continue
+            else:            
+                for num in listaIndices:
+                    contadorFichasJugador2 = contadorFichasJugador2_Columna
                     if contadorFichasJugador2 == 4:
-                        raise GanaJugador_2
-            
+                        raise PartidaJugador_2
+                    else:
+                        contadorFichasJugador2 = 0
                 
     except IndexError:
-        print('Ha ocurrido un problema al elegir al ganador.')            
-    except:
+        pass            
+    except PartidaJugador_1:
         if contadorFichasJugador1 == 4:
             raise GanaJugador_1
-        elif contadorFichasJugador2 == 4:
+        
+    except PartidaJugador_2:
+        if contadorFichasJugador2 == 4:
             raise GanaJugador_2
     
     
@@ -1059,8 +1071,8 @@ def jugarPartida():
                         jugadorActual = Jugador_2
                     elif jugadorActual == Jugador_2:
                         jugadorActual = Jugador_1
-                except AssertionError:
-                    print("Ha ocurrido un error al cambiar de jugador.")
+                except ZeroDivisionError:
+                    print()
             except ErrorExcepcion:  # Si ocurre una excepcion, se debe volver al principio del bucle while.
                 continue            # Esto es para que el jugador que se ha equivocado, no pierda su turno.
         else:
@@ -1070,9 +1082,7 @@ def jugarPartida():
             print('Jugador_1 y Jugador_2 quedan EMPATE.')
             print('###')
             print()
-    except UnboundLocalError:
-        print('No se ha podido crear la partida. Intentalo de nuevo.')
-        print()
+    
     except GanaJugador_1:
         print("#"*10)
         mostrarTablero(tablero)
