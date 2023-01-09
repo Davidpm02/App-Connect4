@@ -125,6 +125,13 @@ Los mensajes de aviso al causar una excepcion se marcan en color rojo cuando los
 <br>
 <br>
 
+<h2> COMMIT #10 --> Insercion CONECTA </h2>
+Estoy implementando la el funcionamiento de la funcion comprobarGanador(), que permitira contar el numero de fichas segun sea el turno de un jugador u otro para, caso de haber 4 fichas coincidentes unidas, detener el programa y avisar por pantalla con un mensaje personalizado.
+<br>
+<br>
+<br>
+<br>
+
 <h2> Futuros Commit's </h2>
 
   - Incluir en la partida un boton ('Pulsa "k" para salir de la partida.') y generar un mensaje por pantalla y el fin del juego.
